@@ -213,5 +213,9 @@ Support for using macros as options for [questions](#questions) is implemented, 
 Asks the user if they prefer "Magic" or "Strength". If they choose the first option, a macro containing a +1 increase to the value in the field "MAG" is saved, if they choose the second option, a macro containing a +1 increase to the value in the field "STR" is saved. In both cases the content is instantly evaluated as well, because of `load="Attribute"`.
 Later the macro is loaded again, further increasing the chosen field by 1.
 
+## TODO
+* Implement [macro](#macros) support for [random](#random) and [comparisons](#comparisons).
+* Implement better control over the result display.
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
