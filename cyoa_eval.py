@@ -10,11 +10,14 @@ EQUAL       = "equal"
 GREATER     = "greater"
 MACRO       = "macro"
 OPTION      = "option"
+FIELD       = "field"
+    # For equal and greater
+    DO          = "do"
+    ELSE        = "else"
 
 # General
 NAME        = "name"
 VALUE       = "value"
-FIELD       = "field"
 CONFLICT    = "conflict"
 OVERWRITE   = "overwrite"
 ADD         = "add"
@@ -46,10 +49,6 @@ NUMBER_DEFAULT      = "2"
 # For macro
 SAVE        = "save"
 LOAD        = "load"
-
-# For equal and greater
-DO          = "do"
-ELSE        = "else"
 
 # Errors:
 QUESTION_MISSING    = "No question text"
