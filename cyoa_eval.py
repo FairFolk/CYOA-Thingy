@@ -1,5 +1,19 @@
+'''
+    cyoa_eval.py: Evaluator for cyoa XML files.
+    Usage: python ./cyoa_eval.py [-h][path]
+    Arguments:
+        path: Path to the XML file to be evaluated
+        -h:   Display usage information
+    Python version: 3.7.3
+    
+    Author:  Unseelie
+    Email:   unseelie@gmx.at
+    Version: 1.0
+'''
+
 import xml.etree.ElementTree as ET
 import random
+import argparse
 
 # Tags:
 QUESTION    = "question"
@@ -247,5 +261,9 @@ class cyoa_eval:
                     self.eval_children(child)
 
 if __name__ == "__main__":
-    ev = cyoa_eval("amg.xml")
+    parser = argparse.ArgumentParser(description='Evaluates cyoa XML files.')
+    parser.add_argument('path', help= 'Path to the XML file to be evaluated')
+    args = parser.parse_args()
+    ev = cyoa_eval(args.path)
     ev.display()
+    
