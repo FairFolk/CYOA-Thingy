@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AMG>
-    <!-- This is just for formatting: -->
+    
+    <!-- This is just for formatting (and default values): -->
     <constant name="BUILD" value="" />
     <constant name="Name" value="" />
     <constant name="Age" value="" />
@@ -11,7 +12,7 @@
     <constant name="Outfit" value="" />
     <constant name="Ability" value="" />
     <constant name="Perks" value="" />
-    <constant name="" value="" />
+    
     <constant name="STATS" value="" />
     <constant name="STR" value="4" />
     <constant name="AGI" value="4" />
@@ -69,9 +70,15 @@
             <question text="Please enter desired ability stat bonus:">
                 <option value="Strength">
                     <constant name="STR" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <constant name="STR" value="1" conflict="add" />
+                    </macro>
                 </option>
                 <option value="Magic">
                     <constant name="MAG" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </macro>
                 </option>
             </question>
         </option>
@@ -79,23 +86,59 @@
             <question text="Please enter desired ability stat bonus:">
                 <option value="Strength">
                     <constant name="STR" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Vitality">
+                                <constant name="VIT" value="1" conflict="add" />
+                            </option>
+                            <option value="Strength">
+                                <constant name="STR" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
                 <option value="Magic">
                     <constant name="MAG" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Vitality">
+                                <constant name="VIT" value="1" conflict="add" />
+                            </option>
+                            <option value="Magic">
+                                <constant name="MAG" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
             </question>
             <constant name="VIT" value="1" conflict="add" />
         </option>
         <option value="Air">
             <constant name="AGI" value="4" conflict="add" />
+            <macro save="for gifted">
+                <constant name="AGI" value="1" conflict="add" />
+            </macro>
         </option>
         <option value="Spirit">
             <question text="Please enter desired ability stat bonus:">
                 <option value="Magic">
                     <constant name="MAG" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </macro>
                 </option>
                 <option value="Luck">
                     <constant name="LCK" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Luck">
+                                <constant name="LCK" value="1" conflict="add" />
+                            </option>
+                            <option value="Magic">
+                                <constant name="MAG" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
             </question>
             <constant name="MAG" value="2" conflict="add" />
@@ -105,18 +148,64 @@
             <constant name="AGI" value="1" conflict="add" />
             <constant name="MAG" value="1" conflict="add" />
             <constant name="LCK" value="1" conflict="add" />
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Strength">
+                        <constant name="STR" value="1" conflict="add" />
+                    </option>
+                    <option value="Agility">
+                        <constant name="AGI" value="1" conflict="add" />
+                    </option>
+                    <option value="Luck">
+                        <constant name="LCK" value="1" conflict="add" />
+                    </option>
+                    <option value="Magic">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
         <option value="Psychic">
             <constant name="MAG" value="2" conflict="add" />
             <constant name="LCK" value="2" conflict="add" />
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Luck">
+                        <constant name="LCK" value="1" conflict="add" />
+                    </option>
+                    <option value="Magic">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
         <option value="Time">
             <question text="Please enter desired ability stat bonus:">
                 <option value="Agility">
                     <constant name="AGI" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Agility">
+                                <constant name="AGI" value="1" conflict="add" />
+                            </option>
+                            <option value="Luck">
+                                <constant name="LCK" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
                 <option value="Vitality">
                     <constant name="VIT" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Vitality">
+                                <constant name="VIT" value="1" conflict="add" />
+                            </option>
+                            <option value="Luck">
+                                <constant name="LCK" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
             </question>
             <constant name="LCK" value="2" conflict="add" />
@@ -125,9 +214,29 @@
             <question text="Please enter desired ability stat bonus:">
                 <option value="Strength">
                     <constant name="STR" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Strength">
+                                <constant name="STR" value="1" conflict="add" />
+                            </option>
+                            <option value="Agility">
+                                <constant name="AGI" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
                 <option value="Magic">
                     <constant name="MAG" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Agility">
+                                <constant name="AGI" value="1" conflict="add" />
+                            </option>
+                            <option value="Magic">
+                                <constant name="MAG" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
             </question>
             <constant name="AGI" value="2" conflict="add" />
@@ -136,14 +245,47 @@
             <constant name="AGI" value="1" conflict="add" />
             <constant name="MAG" value="2" conflict="add" />
             <constant name="LCK" value="1" conflict="add" />
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Agility">
+                        <constant name="AGI" value="1" conflict="add" />
+                    </option>
+                    <option value="Luck">
+                        <constant name="LCK" value="1" conflict="add" />
+                    </option>
+                    <option value="Magic">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
         <option value="Darkness">
             <question text="Please enter desired ability stat bonus:">
                 <option value="Strength">
                     <constant name="STR" value="2" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Strength">
+                                <constant name="STR" value="1" conflict="add" />
+                            </option>
+                            <option value="Vitality">
+                                <constant name="VIT" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
                 <option value="Magic">
                     <constant name="MAG" value="2" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Vitality">
+                                <constant name="VIT" value="1" conflict="add" />
+                            </option>
+                            <option value="Magic">
+                                <constant name="MAG" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
             </question>
             <constant name="VIT" value="1" conflict="add" />
@@ -152,24 +294,83 @@
             <constant name="STR" value="2" conflict="add" />
             <constant name="VIT" value="1" conflict="add" />
             <constant name="LCK" value="1" conflict="add" />
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Strength">
+                        <constant name="STR" value="1" conflict="add" />
+                    </option>
+                    <option value="Vitality">
+                        <constant name="VIT" value="1" conflict="add" />
+                    </option>
+                    <option value="Luck">
+                        <constant name="LCK" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
         <option value="Light">
             <constant name="AGI" value="1" conflict="add" />
             <constant name="VIT" value="2" conflict="add" />
             <constant name="MAG" value="1" conflict="add" />
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Agility">
+                        <constant name="AGI" value="1" conflict="add" />
+                    </option>
+                    <option value="Vitality">
+                        <constant name="VIT" value="1" conflict="add" />
+                    </option>
+                    <option value="Magic">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
         <option value="Wood">
             <constant name="STR" value="1" conflict="add" />
             <constant name="VIT" value="1" conflict="add" />
             <constant name="MAG" value="2" conflict="add" />
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Strength">
+                        <constant name="STR" value="1" conflict="add" />
+                    </option>
+                    <option value="Vitality">
+                        <constant name="VIT" value="1" conflict="add" />
+                    </option>
+                    <option value="Magic">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
         <option value="Empathic">
             <question text="Please enter desired ability stat bonus:">
                 <option value="Strength">
                     <constant name="STR" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Strength">
+                                <constant name="STR" value="1" conflict="add" />
+                            </option>
+                            <option value="Luck">
+                                <constant name="LCK" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
                 <option value="Magic">
                     <constant name="MAG" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Luck">
+                                <constant name="LCK" value="1" conflict="add" />
+                            </option>
+                            <option value="Magic">
+                                <constant name="MAG" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
             </question>
             <constant name="LCK" value="2" conflict="add" />
@@ -178,17 +379,39 @@
             <constant name="STR" value="1" conflict="add" />
             <constant name="AGI" value="2" conflict="add" />
             <constant name="MAG" value="1" conflict="add" />
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Strength">
+                        <constant name="STR" value="1" conflict="add" />
+                    </option>
+                    <option value="Agility">
+                        <constant name="AGI" value="1" conflict="add" />
+                    </option>
+                    <option value="Magic">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
         <option value="Gravity">
             <constant name="MAG" value="4" conflict="add" />
+            <macro save="for gifted">
+                <constant name="MAG" value="1" conflict="add" />
+            </macro>
         </option>
         <option value="Stone">
             <question text="Please enter desired ability stat bonus:">
                 <option value="Strength">
                     <constant name="STR" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <constant name="STR" value="1" conflict="add" />
+                    </macro>
                 </option>
                 <option value="Vitality">
                     <constant name="VIT" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <constant name="VIT" value="1" conflict="add" />
+                    </macro>
                 </option>
             </question>
         </option>
@@ -196,9 +419,35 @@
             <question text="Please enter desired ability stat bonus:">
                 <option value="Vitality">
                     <constant name="VIT" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Strength">
+                                <constant name="STR" value="1" conflict="add" />
+                            </option>
+                            <option value="Agility">
+                                <constant name="AGI" value="1" conflict="add" />
+                            </option>
+                            <option value="Vitality">
+                                <constant name="VIT" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
                 <option value="Luck">
                     <constant name="LCK" value="1" conflict="add" />
+                    <macro save="for gifted">
+                        <question text="Please enter desired ability stat bonus:">
+                            <option value="Strength">
+                                <constant name="STR" value="1" conflict="add" />
+                            </option>
+                            <option value="Agility">
+                                <constant name="AGI" value="1" conflict="add" />
+                            </option>
+                            <option value="Luck">
+                                <constant name="LCK" value="1" conflict="add" />
+                            </option>
+                        </question>
+                    </macro>
                 </option>
             </question>
             <constant name="STR" value="1" conflict="add" />
@@ -208,9 +457,15 @@
             <question text="Please enter desired ability stat bonus:">
                 <option value="Strength">
                     <constant name="STR" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <constant name="STR" value="1" conflict="add" />
+                    </macro>
                 </option>
                 <option value="Luck">
                     <constant name="LCK" value="3" conflict="add" />
+                    <macro save="for gifted">
+                        <constant name="LCK" value="1" conflict="add" />
+                    </macro>
                 </option>
             </question>
         </option>
@@ -249,6 +504,25 @@
                     <constant name="LCK" value="1" conflict="add" />
                 </option>
             </question>
+            <macro save="for gifted">
+                <question text="Please enter desired ability stat bonus:">
+                    <option value="Strength">
+                        <constant name="STR" value="1" conflict="add" />
+                    </option>
+                    <option value="Agility">
+                        <constant name="AGI" value="1" conflict="add" />
+                    </option>
+                    <option value="Vitality">
+                        <constant name="VIT" value="1" conflict="add" />
+                    </option>
+                    <option value="Magic">
+                        <constant name="MAG" value="1" conflict="add" />
+                    </option>
+                    <option value="Luck">
+                        <constant name="LCK" value="1" conflict="add" />
+                    </option>
+                </question>
+            </macro>
         </option>
     </random>
 
@@ -305,7 +579,7 @@
         <option value="Tentacles" />
     </random>
     
-    <repeat number="2">
+    <macro save="Combat Perks">
         <random name="Perks" conflict="stack">
             <option value="Dual Weapon">
                 <equal>
@@ -419,323 +693,7 @@
             </option>
             <option value="Mystic Artifact" />
             <option value="Gifted">
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Fire" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Ice" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Air" />
-                    <do>
-                        <constant name="AGI" value="1" conflict="add" />
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Spirit" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Reinforcement" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Agility">
-                                <constant name="AGI" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Psychic" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Time" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Agility">
-                                <constant name="AGI" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Lightning" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Agility">
-                                <constant name="AGI" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Sound" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Agility">
-                                <constant name="AGI" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Darkness" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Illusion" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Light" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Agility">
-                                <constant name="AGI" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Wood" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Empathic" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Water" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Gravity" />
-                    <do>
-                        <constant name="MAG" value="1" conflict="add" />
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Stone" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Beast" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Agility">
-                                <constant name="AGI" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Metal" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
-                <equal>
-                    <field value="Specialisation" />
-                    <constant value="Oddball" />
-                    <do>
-                        <question text="Please enter desired ability stat bonus:">
-                            <option value="Strength">
-                                <constant name="STR" value="1" conflict="add" />
-                            </option>
-                            <option value="Agility">
-                                <constant name="AGI" value="1" conflict="add" />
-                            </option>
-                            <option value="Magic">
-                                <constant name="MAG" value="1" conflict="add" />
-                            </option>
-                            <option value="Vitality">
-                                <constant name="VIT" value="1" conflict="add" />
-                            </option>
-                            <option value="Luck">
-                                <constant name="LCK" value="1" conflict="add" />
-                            </option>
-                        </question>
-                    </do>
-                </equal>
+                <macro load="for gifted" />
             </option>
             <option value="Flexibility">
                 <constant name="AGI" value="1" conflict="add" />
@@ -790,9 +748,13 @@
             <option value="Awareness" />
             <option value="Power Artifact" />
         </random>
-    </repeat>
+    </macro>
     
     <repeat number="2">
+        <macro load="Combat Perks" />
+    </repeat>
+    
+    <macro save="General Perks">
         <random name="Perks" conflict="stack">
             <option value="Interdimensional Tourist" />
             <option value="Closure">
@@ -823,527 +785,19 @@
             </option>
             <option value="Fake Parents" />
         </random>
+    </macro>
+    
+    <repeat number="2">
+        <macro load="General Perks" />
     </repeat>
     
     <question text="Please enter desired final perk type:">
         <option value="General">
-            <random name="Perks" conflict="stack">
-                <option value="Interdimensional Tourist" />
-                <option value="Closure">
-                    <constant name="LCK" value="1" conflict="add" />
-                </option>
-                <option value="Fated">
-                    <constant name="LCK" value="1" conflict="add" />
-                </option>
-                <option value="Training" />
-                <option value="Interdimensional Home" />
-                <option value="Incognito" />
-                <option value="Enviromental Sealing" />
-                <option value="Get Out Of Jail" />
-                <option value="Big Damn Hero" />
-                <option value="Absolute Direction" />
-                <option value="Big Backpack" />
-                <option value="Natural Aging" />
-                <option value="Masculinity">
-                    <constant name="LCK" value="1" conflict="add" />
-                </option>
-                <option value="Overcity Shift" />
-                <option value="Money" />
-                <option value="Familiar" />
-                <option value="Soul Jar" />
-                <option value="Eternal Style" />
-                <option value="A Way Out">
-                    <constant name="LCK" value="1" conflict="add" />
-                </option>
-                <option value="Fake Parents" />
-            </random>
+            <macro load="General Perks" />
         </option>
         
         <option value="Combat">
-            <random name="Perks" conflict="stack">
-                <option value="Dual Weapon">
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Melee" />
-                        <do>
-                            <question text="Please choose the secondary type of your weapon:">
-                                <option value="Ranged">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Mystic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Fists">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Ranged" />
-                        <do>
-                            <question text="Please choose the secondary type of your weapon:">
-                                <option value="Melee">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                                <option value="Mystic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Fists">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Mystic" />
-                        <do>
-                            <question text="Please choose the secondary type of your weapon:">
-                                <option value="Melee">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                                <option value="Ranged">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Fists">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Fists" />
-                        <do>
-                            <question text="Please choose the secondary type of your weapon:">
-                                <option value="Melee">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                                <option value="Ranged">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Mystic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                </option>
-                <option value="Martial Training">
-                    <constant name="STR" value="1" conflict="add" />
-                </option>
-                <option value="Enhanced Weapon">
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Melee" />
-                        <do>
-                            <question text="Pick the stat from your melee weapon you want to increase:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Ranged" />
-                        <do>
-                            <constant name="AGI" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Mystic" />
-                        <do>
-                            <constant name="MAG" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Weapon" />
-                        <constant value="Fists" />
-                        <do>
-                            <constant name="STR" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                </option>
-                <option value="Mystic Artifact" />
-                <option value="Gifted">
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Fire" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Ice" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Air" />
-                        <do>
-                            <constant name="AGI" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Spirit" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Reinforcement" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Agility">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Psychic" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Time" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Agility">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Lightning" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Agility">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Sound" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Agility">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Darkness" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Illusion" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Light" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Agility">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Wood" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Empathic" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Water" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Gravity" />
-                        <do>
-                            <constant name="MAG" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Stone" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Beast" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Agility">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Metal" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Specialisation" />
-                        <constant value="Oddball" />
-                        <do>
-                            <question text="Please enter desired ability stat bonus:">
-                                <option value="Strength">
-                                    <constant name="STR" value="1" conflict="add" />
-                                </option>
-                                <option value="Agility">
-                                    <constant name="AGI" value="1" conflict="add" />
-                                </option>
-                                <option value="Magic">
-                                    <constant name="MAG" value="1" conflict="add" />
-                                </option>
-                                <option value="Vitality">
-                                    <constant name="VIT" value="1" conflict="add" />
-                                </option>
-                                <option value="Luck">
-                                    <constant name="LCK" value="1" conflict="add" />
-                                </option>
-                            </question>
-                        </do>
-                    </equal>
-                </option>
-                <option value="Flexibility">
-                    <constant name="AGI" value="1" conflict="add" />
-                </option>
-                <option value="Enhanced Transformation" />
-                <option value="Disguise Artifact" />
-                <option value="Blood Magic">
-                    <constant name="VIT" value="1" conflict="add" />
-                </option>
-                <option value="Hammerspace Handbag" />
-                <option value="Enhanced Sustenance">
-                    <constant name="VIT" value="1" conflict="add" />
-                </option>
-                <option value="Enhanced Outfit">
-                    <equal>
-                        <field value="Outfit" />
-                        <constant value="Skimpy" />
-                        <do>
-                            <constant name="AGI" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Outfit" />
-                        <constant value="Flowing" />
-                        <do>
-                            <constant name="STR" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Outfit" />
-                        <constant value="Elaborate" />
-                        <do>
-                            <constant name="MAG" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                    <equal>
-                        <field value="Outfit" />
-                        <constant value="Uniform" />
-                        <do>
-                            <constant name="VIT" value="1" conflict="add" />
-                        </do>
-                    </equal>
-                </option>
-                <option value="Healing Artifact" />
-                <option value="Ally" />
-                <option value="Monstrous Metamorphosis" />
-                <option value="Sorcery">
-                    <constant name="MAG" value="1" conflict="add" />
-                </option>
-                <option value="Wings" />
-                <option value="Purification Artifact" />
-                <option value="Awareness" />
-                <option value="Power Artifact" />
-            </random>
+            <macro load="Combat Perks" />
         </option>
     </question>
 </AMG>
