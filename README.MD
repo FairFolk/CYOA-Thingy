@@ -194,9 +194,11 @@ Checks if the value in the field "Character age" is greater than 20. If it is, t
 If the values of the fields "Alice´s height", "Bob´s height" and "Clemens´ height" are not all equal, the user is prompted to answer the question "Who has a different height?", the answer of which is saved in the field "Different".
 
 #### Macros
+```xml
 <macro [save="save"] [load="load"]>
 	...
 </macro>
+```
 If `save` is provided, all subtags are saved to be loaded later. The subtags are not evaluated at this point.
 If `load` is provided, all subtags previously saved under this value are evaluated.
 A macro may have `save` and `load` attributes at the same time, in which case the saving action is always executed first.
