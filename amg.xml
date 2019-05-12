@@ -756,6 +756,7 @@
             <option value="Natural Aging" />
             <option value="Masculinity">
                 <constant name="LCK" value="1" conflict="add" />
+                <constant name="Gender" value="Male" />
             </option>
             <option value="Overcity Shift" />
             <option value="Money" />

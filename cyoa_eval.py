@@ -1,6 +1,6 @@
 '''
     cyoa_eval.py: Evaluator for cyoa XML files.
-    Usage: python ./cyoa_eval.py [-h][path]
+    Usage: python ./cyoa_eval.py [-h] path
     Arguments:
         path: Path to the XML file to be evaluated
         -h:   Display usage information
@@ -99,6 +99,19 @@ class cyoa_eval:
                 #    pass
             else:
                 self.data[name] = val
+            
+    def get_children_with_tags(self, node, tags):
+        children = []
+        if not isinstance(tags, list):
+            tags = [tags]
+        for child in node:
+            ct = child.tag.lower()
+            if ct in tags:
+                children += [child]
+            elif ct == MACRO:
+                macro = self.eval_macro(child)
+                children += self.get_children_with_tags(macro, tags)
+        return children
 
     def get_answer(self, text, opts, default=-1):
         while True:
@@ -123,12 +136,7 @@ class cyoa_eval:
         type = node.attrib.get("type", QUESTION_DEFAULT_TYPE).lower()
         ans = -1
         
-        children = [child for child in node if child.tag == OPTION]
-        macros = [child for child in node if child.tag == MACRO]
-        for macro in macros:
-            macro = self.eval_macro(macro)
-            if macro != None and macro.tag == OPTION:
-                children += [macro]
+        children = self.get_children_with_tags(node, OPTION)
                     
         if type == SELECT:
             opts = [child.attrib.get(VALUE, VALUE_MISSING) for child in children]
@@ -139,20 +147,20 @@ class cyoa_eval:
         elif type == YESNO:
             opts = YESNO_OPTS
             ans = self.get_answer(node.attrib.get("text", QUESTION_MISSING) + " ([" + opts[0] + "]/" + opts[1] + ")", opts, 0)
+            children = children[:2]
             
         elif type == INPUT:
             print(node.attrib.get("text", QUESTION_MISSING))
             opts = [input()]
             ans = 0
             children = []
-            
+        
         if ans < 0:
             return
             
         if NAME in node.attrib:
             self.set_data(node, opts[ans])
             
-        children = list(node)
         if len(children) > ans:
             self.eval_children(children[ans])
 
@@ -162,10 +170,16 @@ class cyoa_eval:
         choice = None
         
         if type == LIST:
-            num = sum(int(child.attrib.get(WEIGHT, "1")) for child in node if child.tag == OPTION)
+            children = self.get_children_with_tags(node, OPTION)
+                
+            if len(children) == 0:
+                return
+                
+            num = sum(int(child.attrib.get(WEIGHT, "1")) for child in children)
             sel = random.randrange(0, num)
             add = 0
-            for child in node:
+                
+            for child in children:
                 add += int(child.attrib.get(WEIGHT, "1"))
                 if add > sel:
                     choice = child
@@ -185,8 +199,8 @@ class cyoa_eval:
         self.eval_children(choice)
         
     def eval_equal(self, node):
-        vals = [c.attrib[VALUE] for c in node.findall(CONSTANT)]
-        vals += [str(self.data[f.attrib[VALUE]]) for f in node.findall(FIELD)]
+        vals = [c.attrib[VALUE] for c in self.get_children_with_tags(node, CONSTANT)]
+        vals += [str(self.data[f.attrib[VALUE]]) for f in self.get_children_with_tags(node, FIELD)]
         
         if len(vals) < 2 or all(v == vals[0] for v in vals[1:]):
             child = node.find(DO)
@@ -199,8 +213,10 @@ class cyoa_eval:
     def eval_greater(self, node):
         first = None
         do = True
-        for child in node:
+        children = self.get_children_with_tags(node, [CONSTANT, FIELD])
+        for child in children:
             ct = child.tag.lower()
+            
             if ct == CONSTANT:
                 val = int(child.attrib[VALUE])
             elif ct == FIELD:
@@ -230,6 +246,7 @@ class cyoa_eval:
         id = node.attrib.get("load", None)
         if id != None:
             return self.macro[id]
+        return []
             
     def eval_children(self, node):
         for child in node:
@@ -257,8 +274,7 @@ class cyoa_eval:
                 
             elif ct == MACRO:
                 child = self.eval_macro(child)
-                if child != None:
-                    self.eval_children(child)
+                self.eval_children(child)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Evaluates cyoa XML files.')
