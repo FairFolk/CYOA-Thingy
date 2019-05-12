@@ -200,7 +200,6 @@ If the values of the fields "Alice´s height", "Bob´s height" and "Clemens´ he
 If `save` is provided, all subtags are saved to be loaded later. The subtags are not evaluated at this point.
 If `load` is provided, all subtags previously saved under this value are evaluated.
 A macro may have `save` and `load` attributes at the same time, in which case the saving action is always executed first.
-Support for using macros as options for [questions](#questions) is implemented, but untested. Support for using macros in [random](#random) or [comparisons](#comparisons) is not yet implemented.
 
 ##### Example
 ```xml
