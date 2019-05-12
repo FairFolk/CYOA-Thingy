@@ -8,7 +8,7 @@
     
     Author:  Unseelie
     Email:   unseelie@gmx.at
-    Version: 1.0
+    Version: 1.1
 '''
 
 import xml.etree.ElementTree as ET
