@@ -11,9 +11,9 @@ GREATER     = "greater"
 MACRO       = "macro"
 OPTION      = "option"
 FIELD       = "field"
-    # For equal and greater
-    DO          = "do"
-    ELSE        = "else"
+# For equal and greater
+DO          = "do"
+ELSE        = "else"
 
 # General
 NAME        = "name"
@@ -109,8 +109,15 @@ class cyoa_eval:
         type = node.attrib.get("type", QUESTION_DEFAULT_TYPE).lower()
         ans = -1
         
+        children = [child for child in node if child.tag == OPTION]
+        macros = [child for child in node if child.tag == MACRO]
+        for macro in macros:
+            macro = self.eval_macro(macro)
+            if macro != None and macro.tag == OPTION:
+                children += [macro]
+                    
         if type == SELECT:
-            opts = [child.attrib.get(VALUE, VALUE_MISSING) for child in node if child.tag == OPTION]
+            opts = [child.attrib.get(VALUE, VALUE_MISSING) for child in children]
             text = node.attrib.get("text", QUESTION_MISSING) + " (Enter Number or Substring):\n"
             text += "\n".join(str(num+1) + ") " + val for num, val in enumerate(opts))
             ans = self.get_answer(text, opts)
@@ -123,6 +130,7 @@ class cyoa_eval:
             print(node.attrib.get("text", QUESTION_MISSING))
             opts = [input()]
             ans = 0
+            children = []
             
         if ans < 0:
             return
@@ -207,7 +215,7 @@ class cyoa_eval:
         
         id = node.attrib.get("load", None)
         if id != None:
-            self.eval_children(self.macro[id])
+            return self.macro[id]
             
     def eval_children(self, node):
         for child in node:
@@ -234,7 +242,9 @@ class cyoa_eval:
                 self.eval_greater(child)
                 
             elif ct == MACRO:
-                self.eval_macro(child)
+                child = self.eval_macro(child)
+                if child != None:
+                    self.eval_children(child)
 
 if __name__ == "__main__":
     ev = cyoa_eval("amg.xml")
