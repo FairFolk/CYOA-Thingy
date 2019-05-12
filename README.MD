@@ -22,7 +22,16 @@ General information about the structure of XML files can be found [here](https:/
 ### Tags
 Remember that tags are case-sensitive.
 
-#### Cyoa
+* [CYOA](#cyoa)
+* [Constants](#constants)
+* [Questions](#questions)
+	* [Options](#options)
+* [Random](#random)
+* [Repeats](#repeats)
+* [Comparisons](#comparisons)
+* [Macros](#macros)
+
+#### CYOA
 ```xml
 <cyoa>
 ...
