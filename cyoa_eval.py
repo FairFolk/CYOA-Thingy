@@ -238,5 +238,5 @@ class cyoa_eval:
                 self.eval_macro(child)
 
 if __name__ == "__main__":
-    ev = cyoa_eval("data.xml")
+    ev = cyoa_eval("amg.xml")
     ev.display()

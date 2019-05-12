@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<AMG>
-    
+<cyoa>
     <!-- This is just for formatting (and default values): -->
     <constant name="BUILD" value="" />
     <constant name="Name" value="" />
@@ -487,24 +486,7 @@
                     <constant name="LCK" value="2" conflict="add" />
                 </option>
             </question>
-            <question text="Please enter desired ability stat bonus:">
-                <option value="Strength">
-                    <constant name="STR" value="1" conflict="add" />
-                </option>
-                <option value="Agility">
-                    <constant name="AGI" value="1" conflict="add" />
-                </option>
-                <option value="Vitality">
-                    <constant name="VIT" value="1" conflict="add" />
-                </option>
-                <option value="Magic">
-                    <constant name="MAG" value="1" conflict="add" />
-                </option>
-                <option value="Luck">
-                    <constant name="LCK" value="1" conflict="add" />
-                </option>
-            </question>
-            <macro save="for gifted">
+            <macro save="for gifted" load="for gifted">
                 <question text="Please enter desired ability stat bonus:">
                     <option value="Strength">
                         <constant name="STR" value="1" conflict="add" />
@@ -800,4 +782,4 @@
             <macro load="Combat Perks" />
         </option>
     </question>
-</AMG>
+</cyoa>
