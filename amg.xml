@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cyoa>
-    <!-- This is just for formatting (and default values): -->
-    <constant name="BUILD" value="" />
-    <constant name="Name" value="" />
-    <constant name="Age" value="" />
+    <!-- Default values: -->
     <constant name="Gender" value="Female" />
-    <constant name="Body Type" value="" />
-    <constant name="Specialisation" value="" />
-    <constant name="Weapon" value="" />
-    <constant name="Outfit" value="" />
-    <constant name="Ability" value="" />
-    <constant name="Perks" value="" />
-    
-    <constant name="STATS" value="" />
     <constant name="STR" value="4" />
     <constant name="AGI" value="4" />
     <constant name="VIT" value="4" />
     <constant name="MAG" value="4" />
     <constant name="LCK" value="4" />
+    
     <!-- Now the important stuff -->
-
     <question text="Do you want to name your character?" type="yesno">
         <option>
             <question text="Enter name:" type="input" name="Name" />
@@ -562,10 +551,10 @@
     </random>
     
     <macro save="Combat Perks">
-        <random name="Perks" conflict="stack">
+        <random name="Perks" conflict="list">
             <option value="Dual Weapon">
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Melee" />
                     <do>
                         <question text="Please choose the secondary type of your weapon:">
@@ -582,7 +571,7 @@
                     </do>
                 </equal>
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Ranged" />
                     <do>
                         <question text="Please choose the secondary type of your weapon:">
@@ -599,7 +588,7 @@
                     </do>
                 </equal>
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Mystic" />
                     <do>
                         <question text="Please choose the secondary type of your weapon:">
@@ -616,7 +605,7 @@
                     </do>
                 </equal>
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Fists" />
                     <do>
                         <question text="Please choose the secondary type of your weapon:">
@@ -638,7 +627,7 @@
             </option>
             <option value="Enhanced Weapon">
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Melee" />
                     <do>
                         <question text="Pick the stat from your melee weapon you want to increase:">
@@ -652,21 +641,21 @@
                     </do>
                 </equal>
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Ranged" />
                     <do>
                         <constant name="AGI" value="1" conflict="add" />
                     </do>
                 </equal>
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Mystic" />
                     <do>
                         <constant name="MAG" value="1" conflict="add" />
                     </do>
                 </equal>
                 <equal>
-                    <field value="Weapon" />
+                    <field name="Weapon" />
                     <constant value="Fists" />
                     <do>
                         <constant name="STR" value="1" conflict="add" />
@@ -691,28 +680,28 @@
             </option>
             <option value="Enhanced Outfit">
                 <equal>
-                    <field value="Outfit" />
+                    <field name="Outfit" />
                     <constant value="Skimpy" />
                     <do>
                         <constant name="AGI" value="1" conflict="add" />
                     </do>
                 </equal>
                 <equal>
-                    <field value="Outfit" />
+                    <field name="Outfit" />
                     <constant value="Flowing" />
                     <do>
                         <constant name="STR" value="1" conflict="add" />
                     </do>
                 </equal>
                 <equal>
-                    <field value="Outfit" />
+                    <field name="Outfit" />
                     <constant value="Elaborate" />
                     <do>
                         <constant name="MAG" value="1" conflict="add" />
                     </do>
                 </equal>
                 <equal>
-                    <field value="Outfit" />
+                    <field name="Outfit" />
                     <constant value="Uniform" />
                     <do>
                         <constant name="VIT" value="1" conflict="add" />
@@ -737,7 +726,7 @@
     </repeat>
     
     <macro save="General Perks">
-        <random name="Perks" conflict="stack">
+        <random name="Perks" conflict="list">
             <option value="Interdimensional Tourist" />
             <option value="Closure">
                 <constant name="LCK" value="1" conflict="add" />

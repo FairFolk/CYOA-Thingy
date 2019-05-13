@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Tab:        &#09;
+    Newline:    &#10;
+-->
+<cyoa-display>
+    <constant value="" />
+    <constant value="&#09;--BUILD--" />
+    <constant value="" />
+    <field name="Name" name-format="{}:&#09;&#09;" />
+    <field name="Age" name-format="{}:&#09;&#09;" />
+    <field name="Gender" name-format="{}:&#09;&#09;" />
+    <field name="Body Type" name-format="{}:&#09;" />
+    <field name="Specialisation" name-format="{}:&#09;" />
+    <field name="Weapon" name-format="{}:&#09;&#09;" />
+    <field name="Outfit" name-format="{}:&#09;&#09;" />
+    <field name="Ability" name-format="{}:&#09;" />
+    <field name="Perks" name-format="{}:&#09;&#09;" seperator="&#10;&#09;&#09;" />
+    <constant value="" />
+    <constant value="" />
+    <constant value="&#09;--STATS--" />
+    <constant value="" />
+    <field name="STR" name-format="&#09;{}:   " />
+    <field name="AGI" name-format="&#09;{}:   " />
+    <field name="VIT" name-format="&#09;{}:   " />
+    <field name="MAG" name-format="&#09;{}:   " />
+    <field name="LCK" name-format="&#09;{}:   " />
+    <constant value="" />
+</cyoa-display>

@@ -8,7 +8,7 @@
     
     Author:  Unseelie
     Email:   unseelie@gmx.at
-    Version: 1.1
+    Version: 1.2
 '''
 
 import xml.etree.ElementTree as ET
@@ -37,7 +37,8 @@ OVERWRITE   = "overwrite"
 ADD         = "add"
 SKIP        = "skip"
 APPEND      = "append"
-STACK       = "stack"
+LIST        = "list"
+STACK       = "stack" # Deprecated, use LIST and cyoa_disp.py instead
 CONFLICT_DEFAULT = OVERWRITE
 
 # For questions:
@@ -86,13 +87,18 @@ class cyoa_eval:
         if NAME in node.attrib:
             name = node.attrib[NAME]
             if name in self.data:
-                conf = node.attrib.get(CONFLICT, CONFLICT_DEFAULT)
+                conf = node.attrib.get(CONFLICT, CONFLICT_DEFAULT).lower()
                 if conf == OVERWRITE:
                     self.data[name] = val
                 elif conf == ADD:
                     self.data[name] = int(val) + int(self.data[name])
                 elif conf == APPEND:
                     self.data[name] = str(self.data[name]) + str(val)
+                elif conf == LIST:
+                    if isinstance(self.data[name], list):
+                        self.data[name] += [val]
+                    else:
+                        self.data[name] = [self.data[name], val]
                 elif conf == STACK:
                     self.data[name] = str(self.data[name]) + "\n\t" + str(val)
                 #elif conf == SKIP:
@@ -178,7 +184,7 @@ class cyoa_eval:
             num = sum(int(child.attrib.get(WEIGHT, "1")) for child in children)
             sel = random.randrange(0, num)
             add = 0
-                
+            
             for child in children:
                 add += int(child.attrib.get(WEIGHT, "1"))
                 if add > sel:
@@ -193,22 +199,20 @@ class cyoa_eval:
         if choice == None:
             return
         
-        if NAME in node.attrib:
-            self.set_data(node, child.attrib.get(VALUE, VALUE_MISSING))
+        self.set_data(node, choice.attrib.get(VALUE, VALUE_MISSING))
             
         self.eval_children(choice)
         
     def eval_equal(self, node):
         vals = [c.attrib[VALUE] for c in self.get_children_with_tags(node, CONSTANT)]
-        vals += [str(self.data[f.attrib[VALUE]]) for f in self.get_children_with_tags(node, FIELD)]
+        vals += [str(self.data[f.attrib[NAME]]) for f in self.get_children_with_tags(node, FIELD)]
         
         if len(vals) < 2 or all(v == vals[0] for v in vals[1:]):
-            child = node.find(DO)
+            children = self.get_children_with_tags(node, DO)
         else:
-            child = node.find(ELSE)
+            children = self.get_children_with_tags(node, ELSE)
             
-        if child != None:
-            self.eval_children(child)
+        self.eval_children(children)
             
     def eval_greater(self, node):
         first = None
@@ -220,7 +224,7 @@ class cyoa_eval:
             if ct == CONSTANT:
                 val = int(child.attrib[VALUE])
             elif ct == FIELD:
-                val = int(self.data[child.attrib[VALUE]])
+                val = int(self.data[child.attrib[NAME]])
             else:
                 continue
             
