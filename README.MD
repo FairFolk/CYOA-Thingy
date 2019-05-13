@@ -21,6 +21,11 @@ positional arguments:
 optional arguments:
   -h, --help  show this help message and exit
 ```
+##### Example
+
+```console
+$ python ./cyoa_display.py [-h] ./amg.xml ./amg_disp.xml
+```
 
 ## Writing XML files
 General information about the structure of XML files can be found [here](https://www.w3schools.com/xml/).
