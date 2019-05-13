@@ -23,8 +23,8 @@ optional arguments:
 ```
 ##### Example
 
-```console
-$ python ./cyoa_display.py [-h] ./amg.xml ./amg_disp.xml
+```sh
+$ python ./cyoa_display.py ./amg.xml ./amg_disp.xml
 ```
 
 ## Writing XML files
