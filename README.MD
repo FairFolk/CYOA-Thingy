@@ -1,15 +1,21 @@
-# cyao_eval
+# CYAO character generator tools
 
+#### cyoa_eval.py
 Evaluates XML files to generate CYOA characters.
+
+#### cyoa_display.py
+Displays data evaluated with cyao_eval.py
 
 ## Usage
 
 ```console
 $ python ./cyoa_eval.py [-h] path
+$ python ./cyoa_display.py [-h] data_path disp_path
 ```
 ```console
 positional arguments:
-  path        Path to the XML file to be evaluated
+  path/data_path	Path to the XML file to be evaluated
+  disp_path		Path to the XML file describing the display format
 ```
 ```console
 optional arguments:
@@ -18,18 +24,23 @@ optional arguments:
 
 ## Writing XML files
 General information about the structure of XML files can be found [here](https://www.w3schools.com/xml/).
-
-### Tags
 Remember that tags are case-sensitive.
 
-* [CYOA](#cyoa)
-* [Constants](#constants)
-* [Questions](#questions)
-	* [Options](#options)
-* [Random](#random)
-* [Repeats](#repeats)
-* [Comparisons](#comparisons)
-* [Macros](#macros)
+* [Eval Tags](#eval-tags)
+	* [CYOA](#cyoa)
+	* [Constants](#constants)
+	* [Questions](#questions)
+		* [Options](#options)
+	* [Random](#random)
+	* [Repeats](#repeats)
+	* [Comparisons](#comparisons)
+	* [Macros](#macros)
+* [Display Tags](#display-tags)
+	* [Constants](#display-constants)
+	* [Fields](#display-fields)
+
+### Eval Tags
+Tags used by cyoa_eval.py
 
 #### CYOA
 ```xml
@@ -223,9 +234,54 @@ A macro may have `save` and `load` attributes at the same time, in which case th
 Asks the user if they prefer "Magic" or "Strength". If they choose the first option, a macro containing a +1 increase to the value in the field "MAG" is saved, if they choose the second option, a macro containing a +1 increase to the value in the field "STR" is saved. In both cases the content is instantly evaluated as well, because of `load="Attribute"`.
 Later the macro is loaded again, further increasing the chosen field by 1.
 
-## TODO
-* Implement [macro](#macros) support for [random](#random) and [comparisons](#comparisons).
-* Implement better control over the result display.
+### Display Tags
+Tags used by cyoa_display.py
+
+#### Display Constants
+```xml
+<constant value="value" />
+```
+Prints the value of `value`.
+
+##### Example
+```xml
+<constant value="Hello" />
+<constant value="&#10;&#09;Hello" />
+```
+Prints:
+```Console
+Hello
+
+	Hello
+```
+
+#### Display Fields
+```xml
+<field name="name" [name-format="{}: "] [seperator="&#10;&#09;"] />
+```
+Displays the name and contents of field `name`. The name is hereby formatted as given in `name-format`, replacing `{}` with the name.
+If the value of field `name` is a list, the elements are joined with `seperator` as seperator.
+The default values of these fields are "{}: " and "&#10;&#09;" respectively, where "&#10;" is a linebreak and "&#09;" is a tab.
+
+##### Examples
+Assume field `Fruit` contains "Apple" and field `Numbers` contains the list [1, 2, 3].
+```xml
+<field name="Fruit" />
+```
+Prints:
+```console
+Fruit: Apple
+```
+```xml
+<field name="Numbers" name-format="--{}--&#10;" seperator="&#10;" />
+```
+Prints:
+```console
+--Numbers--
+1
+2
+3
+```
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
